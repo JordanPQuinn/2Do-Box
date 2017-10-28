@@ -11,6 +11,9 @@ $('.card-container').on('blur', 'article p', editCardBody);
 $('.card-container').on('click', '.upvote', upvote);
 $('.card-container').on('click', '.downvote', downvote);
 $('.card-container').on( 'click', '.delete', removeCard);
+$('#title-input').on('keyup', enabledButton); 
+$('#description-input').on('keyup', enabledButton);
+$('#search').on('keyup', searchContent);
 
 function displayIdea(id) {
   var getArray = localStorage.getItem(id);
@@ -49,20 +52,7 @@ function storeOrReject(e) {
   }
 }
 
-$('#title-input').on('keyup', enabledButton); 
-$('#description-input').on('keyup', enabledButton);
-
-$('#search').on('keyup', function() {
-  searchTitle();
-  searchBody();
-});
-
-// $('.card-container').on('blur', 'article h2', 'article p', editContent);
-//Take two blur event listeners, set them to parse both the body and the title
-//Then send both back to local storage
-//Rather than take it out in pieces and send it back in pieces
-
-function editCardTitle(){
+function editCardTitle() {
   var cardID = $(this).closest('article').attr('id');
   var parsedCardId = JSON.parse(localStorage.getItem(cardID));
   parsedCardId.title = $(this).text();
@@ -70,17 +60,15 @@ function editCardTitle(){
   var storeTitle = localStorage.setItem(cardID, titleStringify);
 }
 
-function editCardBody(){
+function editCardBody() {
   var cardID = $(this).closest('article').attr('id');
   var parsedCardId = JSON.parse(localStorage.getItem(cardID));
   parsedCardId.body = $(this).text();
   var bodyStringify =JSON.stringify(parsedCardId);
   var storeBody = localStorage.setItem(cardID, bodyStringify);
-  };
+  }
 
-
-
-function upvote(){
+function upvote() {
   var cardID = $(this).closest('article').attr('id');
   var parsedCardId = JSON.parse(localStorage.getItem(cardID));
   var qualityDisplay = $(this).siblings('h3').find('.qualityValue');
@@ -94,7 +82,7 @@ function upvote(){
   }
     var qualityStringify = JSON.stringify(parsedCardId);
     var storeQuality = localStorage.setItem(cardID, qualityStringify);
-};
+}
 
 function downvote() {
   var cardID = $(this).closest('article').attr('id');
@@ -110,7 +98,7 @@ function downvote() {
   }
     var qualityStringify = JSON.stringify(parsedCardId);
     var storeQuality = localStorage.setItem(cardID, qualityStringify);
-};
+}
 
 function removeCard() {
   var cardToDel = $(this).closest('article');
@@ -146,37 +134,19 @@ function clearInput() {
 }
 
 function enabledButton() {
-$('.save-btn').attr('disabled', false);
+  $('.save-btn').attr('disabled', false);
 }
 
-function searchTitle() {
- var $searchValue = $('#search').val().toLowerCase();
- var $cardsTitle = $('article h2');
- $.each($cardsTitle, function(index, value){
-  var $cardsLowerCase = $(value).text().toLowerCase();
-  if ($cardsLowerCase.includes($searchValue) === true) {
-  var cardShow = $(value).parent('article');
-  cardShow.show();
-  } 
-else {
-  var cardShow = $(value).parent('article');
-  cardShow.hide();
+function searchContent(){
+  var $searchValue = $('#search').val();
+  var $cardsTitle = $('article h2');
+  var $cardsBody = $('article p');
+  for (i=0; i<$cardsTitle.length; i++){
+   if ($($cardsTitle[i]).text().includes($searchValue) || ($($cardsBody[i]).text().includes($searchValue))) {
+    $($cardsTitle[i]).closest('article').show();
+   } 
+   else {
+    $($cardsTitle[i]).closest('article').hide();
+   }
   }
- })
-}
-
-function searchBody() {
- var $searchValue = $('#search').val().toLowerCase();
- var $cardsBody = $('article p');
- $.each($cardsBody, function(index, value) {
-  var $cardsLowerCase = $(value).text().toLowerCase();
-  if ($cardsLowerCase.includes($searchValue) === true) {
-  var cardShow = $(value).parent('article');
-  cardShow.show();
-  } 
-  else {
-    var cardShow = $(value).parent('article');
-    cardShow.hide();
-    }
-  })
 }

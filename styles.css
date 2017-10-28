@@ -1,0 +1,286 @@
+article {
+  height: 50%;
+  margin: 1em auto;
+  position: relative;
+  width: 57%;
+}
+
+body {
+  background-color: #FFFFFF;
+  margin: 0em;
+}
+
+header {
+  background-color: #E5F3F2;
+  height: 59vh;
+  width: 100%;
+}
+
+h1 {
+  margin: 0;
+  padding: .5em 0em;
+  text-align: center;
+}
+
+h1,
+h2 {
+  color: #6D6E71;
+  font-family: 'Roboto Slab', serif;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+h3 {
+  color: #6D6E71;
+  font-size: 1.3em;
+  margin-left: 4.4em;
+  text-align: left;
+}
+
+input,
+textarea {
+  border: 1px solid #B0B2B5;
+  display: block;
+  height: 9%;
+  margin: 1em auto;
+  padding: 1% 0% 0% 1%;
+  width: 55%;
+  color: #939598;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+input::placeholder {
+  color: #939598;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+textarea::placeholder {
+  color: #939598;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+p {
+  color: #939598;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5em;
+}
+
+.circle {
+  border-radius: 50%;
+  display: inline-block;
+  height: 1.2em;
+  position: absolute;
+  width: 1.2em;
+}
+
+.delete {
+  background-image: url("images/delete.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  right: 0;
+  top: .2em;
+}
+
+.delete:hover {
+  background-image: url("images/delete-hover.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.downvote {
+  background-image: url("images/downvote.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  bottom: 2em;
+  left: 2em;
+  object-fit: cover;
+}
+
+.downvote:hover {
+  background-image: url("images/downvote-hover.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.ideaH1 {
+  color: #00A79D;
+}
+
+.qualityValue {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.save-btn {
+  background-color: #4BA59E;
+  border: none;
+  color: #FFFFFF;
+  display: block;
+  font-size: 1.4em;
+  height: 15%;
+  margin: auto;
+  width: 56%;
+}
+
+.save-btn:disabled {
+  background-color: #9AB3B1;
+}
+
+.title-missing-field,
+.body-missing-field {
+  color: #ca0707;
+  text-align: center;
+  font-size: 1.4em;
+}
+
+.upvote {
+  background-image: url("images/upvote.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  bottom: 2em;
+  left: 0;
+  object-fit: cover;
+}
+
+.upvote:hover {
+  background-image: url("images/upvote-hover.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+#search {
+  height: 9%;
+  margin: 1.5em auto;
+  padding: 1%;
+}
+
+@media screen and (max-width: 900px) {
+  article {
+    height: 50%;
+    margin: auto;
+    width: 64%;
+  }
+  
+  header {
+    height: 52vh;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1em;
+    margin-left: 5.4em;
+  }
+
+  input,
+  textarea {
+    font-size: 0.85em;
+    height: 13%;
+    margin: 0% 0% 3% 17%;
+    padding: 0% 0% 0% 1%;
+    width: 64%;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .downvote {
+    bottom: 1.6em;
+  }
+ 
+  .save-btn {
+    font-size: 1.5em;
+    height: 14%;
+    margin: 3% 1% 1% 16.5%;
+    display: block;
+    width: 66%;
+  }
+
+  .upvote {
+    bottom: 1.6em;
+  }
+
+  #search {
+    height: 3em;
+    padding: 0% 0% 0% 1%;
+  }
+  
+}
+
+@media screen and (max-width: 420px) {
+  header {
+    height:  48vh;
+  }
+
+  h1 {
+    font-size: 1.85em;
+    height: 4vh;
+    padding: 1% 0% 1% 1%;
+  }
+
+  h2{
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  } 
+
+  input,
+  textarea {
+    font-size: 0.95em;
+    height: 3vh;
+    margin: .8em auto;
+    padding: 4% 0% 2% 2%;
+  }
+
+  p {
+    font-size: .8em;
+  }
+
+  .downvote {
+    bottom: 1.9em;
+  }
+
+  .save-btn {
+    border: none;
+    font-size: 1.65em;
+    height: 15%;
+    margin: auto;
+    width: 66.6%;
+  }
+
+  .title-missing-field,
+  .body-missing-field {
+    font-size: 0.8em;
+  }
+
+  .upvote {
+    bottom: 1.9em;
+  }
+
+ #description-input {
+    height: 29%;
+  }
+
+  #search {
+    margin: 1em auto;
+  }
+}

@@ -115,15 +115,14 @@ function StoreCard(title, body, id, quality) {
 }
 
 function createIdea(title, body, id, quality) {
-  $('.card-side').prepend(
-    `<article class="container" id ="${id}">
-      <h2 contenteditable="true">${title}</h2>
+  $('.card-container').prepend(
+    `<article class="card" id ="${id}">
+      <h2 class="card-header" contenteditable="true">${title}</h2>
       <div class="circle delete"></div>
       <p contenteditable="true">${body}</p>
       <h3>quality: <span class="qualityValue">${quality}</span></h3>
       <div class="circle upvote"> </div>
       <div class="circle downvote"> </div>
-      <hr>
     </article>`)
 }
 

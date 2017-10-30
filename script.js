@@ -29,7 +29,7 @@ function storeIdea() {
   var $title = $('#title-input').val();
   var $body = $('#description-input').val();
   var $id = Date.now();
-  var $quality = 'swill';
+  var $quality = 'none';
   var storeCard = new StoreCard($title, $body, $id, $quality);
   var stringified = JSON.stringify(storeCard);
   localStorage.setItem($id, stringified);
@@ -117,12 +117,16 @@ function StoreCard(title, body, id, quality) {
 function createIdea(title, body, id, quality) {
   $('.card-container').prepend(
     `<article class="card" id ="${id}">
+      <div class="vote-container">
+        <div class="circle-upvote"> </div>
+        <div class="importance-dot"> </div>
+        <div class="circle-downvote"> </div>
+      </div>
+      <div class="circle-delete"></div>
+      <div class = "text-container">
       <h2 class="card-header" contenteditable="true">${title}</h2>
-      <div class="circle delete"></div>
       <p contenteditable="true">${body}</p>
-      <h3>quality: <span class="qualityValue">${quality}</span></h3>
-      <div class="circle upvote"> </div>
-      <div class="circle downvote"> </div>
+      </div>
     </article>`)
 }
 

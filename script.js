@@ -13,7 +13,7 @@ $('.card-container').on('click', '.circle-downvote', downvote);
 $('.card-container').on( 'click', '.circle-delete', removeCard);
 $('#title-input').on('keyup', enabledButton); 
 $('#description-input').on('keyup', enabledButton);
-$('#search').on('keyup', searchContent);
+$('#filter').on('keyup', searchContent);
 
 function displayIdea(id) {
   var getArray = localStorage.getItem(id);
@@ -141,7 +141,7 @@ function enabledButton() {
 }
 
 function searchContent(){
-  var $searchValue = $('#search').val();
+  var $searchValue = $('#filter').val();
   var $cardsTitle = $('article h2');
   var $cardsBody = $('article p');
   for (i=0; i<$cardsTitle.length; i++){

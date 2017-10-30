@@ -8,9 +8,9 @@ $(document).ready(function() {
 $('.save-btn').on('click', storeOrReject);
 $('.card-container').on('blur', 'article h2', editCardTitle);
 $('.card-container').on('blur', 'article p', editCardBody);
-$('.card-container').on('click', '.upvote', upvote);
-$('.card-container').on('click', '.downvote', downvote);
-$('.card-container').on( 'click', '.delete', removeCard);
+$('.card-container').on('click', '.circle-upvote', upvote);
+$('.card-container').on('click', '.circle-downvote', downvote);
+$('.card-container').on( 'click', '.circle-delete', removeCard);
 $('#title-input').on('keyup', enabledButton); 
 $('#description-input').on('keyup', enabledButton);
 $('#search').on('keyup', searchContent);

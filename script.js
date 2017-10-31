@@ -14,6 +14,12 @@ $('.card-container').on( 'click', '.circle-delete', removeCard);
 $('#title-input').on('keyup', enabledButton); 
 $('#description-input').on('keyup', enabledButton);
 $('#filter').on('keyup', searchContent);
+$('.filter-buttons').on('click','.none', noneFilter);
+$('.filter-buttons').on('click', '.low', lowFilter);
+$('.filter-buttons').on('click', '.normal', normalFilter);
+$('.filter-buttons').on('click', '.high', highFilter);
+$('.filter-buttons').on('click', '.critical', criticalFilter);
+
 
 function displayIdea(id) {
   var getArray = localStorage.getItem(id);
@@ -177,5 +183,65 @@ function searchContent(){
    else {
     $($cardsTitle[i]).closest('article').hide();
    }
+  }
+}
+
+function noneFilter(){
+  var importanceDotsArray = $('.importance-dot');
+  for (i=0; i<importanceDotsArray.length; i++){
+    if ($(importanceDotsArray[i]).hasClass('importance-dot-0')) {
+      $(importanceDotsArray[i]).closest('article').show();
+    }
+    else {
+      $(importanceDotsArray[i]).closest('article').hide();
+    }
+  }
+}
+
+function lowFilter(){
+  var importanceDotsArray = $('.importance-dot');
+  for (i=0; i<importanceDotsArray.length; i++){
+    if ($(importanceDotsArray[i]).hasClass('importance-dot-1')){
+      $(importanceDotsArray[i]).closest('article').show();
+    }
+    else {
+      $(importanceDotsArray[i]).closest('article').hide();
+    }
+  }
+}
+
+function normalFilter(){
+  var importanceDotsArray = $('.importance-dot');
+  for (i=0; i<importanceDotsArray.length; i++){
+    if ($(importanceDotsArray[i]).hasClass('importance-dot-2')){
+      $(importanceDotsArray[i]).closest('article').show();
+    }
+    else {
+      $(importanceDotsArray[i]).closest('article').hide();
+    }
+  }
+}
+
+function highFilter(){
+  var importanceDotsArray = $('.importance-dot');
+  for (i=0; i<importanceDotsArray.length; i++){
+    if ($(importanceDotsArray[i]).hasClass('importance-dot-3')){
+      $(importanceDotsArray[i]).closest('article').show();
+    }
+    else {
+      $(importanceDotsArray[i]).closest('article').hide();
+    }
+  }
+}
+
+function criticalFilter(){
+  var importanceDotsArray = $('.importance-dot');
+  for (i=0; i<importanceDotsArray.length; i++){
+    if ($(importanceDotsArray[i]).hasClass('importance-dot-4')){
+      $(importanceDotsArray[i]).closest('article').show();
+    }
+    else {
+      $(importanceDotsArray[i]).closest('article').hide();
+    }
   }
 }

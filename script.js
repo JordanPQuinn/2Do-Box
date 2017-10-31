@@ -4,6 +4,7 @@ $(document).ready(function() {
     hideCompleted();
     $('#title-input').focus();
   }
+  showFirstTen();
 });
 
 $('.save-btn').on('click', storeOrReject);
@@ -21,7 +22,6 @@ $('.filter-buttons').on('click', '.normal', normalFilter);
 $('.filter-buttons').on('click', '.high', highFilter);
 $('.filter-buttons').on('click', '.critical', criticalFilter);
 $('.card-container').on('click', '.complete-task', completeTask);
-
 
 function displayIdea(id) {
   var getArray = localStorage.getItem(id);
@@ -75,7 +75,7 @@ function editCardBody() {
   parsedCardId.body = $(this).text();
   var bodyStringify =JSON.stringify(parsedCardId);
   var storeBody = localStorage.setItem(cardID, bodyStringify);
-  }
+}
 
 function upvote() {
   var cardID = $(this).closest('article').attr('id');
@@ -230,7 +230,18 @@ function completeTask() {
   var storeQuality = localStorage.setItem(cardID, qualityStringify)
 }
 
-function hideCompleted(){
+function hideCompleted() {
   var completed = $('.true');
   completed.hide();
 }
+
+function showFirstTen() {
+   var cardsArray = $('.card');
+   console.log(cardsArray);
+   for(var i = 0; i < cardsArray.length; i++){
+    if(i >= 10){
+      $(cardsArray[i]).hide();
+    }
+   }
+ }
+

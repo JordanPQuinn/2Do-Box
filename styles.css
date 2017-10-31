@@ -12,14 +12,13 @@ body {
 }
 
 .submit-side{
-  position: relative;
+  position: fixed;
   background-color: #D6D6D6;
   width: 33.3%;
   display: inline-block;
   height: 103%;
   margin-right: -4px;
   margin-bottom: -5px;
-  padding: 0;
   overflow-y: auto;
 }
 

@@ -220,8 +220,24 @@ body {
   cursor: pointer;
 }
 
-.importance-dot {
+.importance-dot-0 {
   background-image: url('images/none-dot.svg');
+}
+
+.importance-dot-1 {
+  background-image: url('images/low-dot.svg');
+}
+
+.importance-dot-2 {
+  background-image: url('images/normal-dot.svg');
+}
+
+.importance-dot-3 {
+  background-image: url('images/high-dot.svg');
+}
+
+.importance-dot-4 {
+  background-image: url('images/critical-dot.svg');
 }
 
 .vote-container {

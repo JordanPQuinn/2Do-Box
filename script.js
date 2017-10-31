@@ -21,18 +21,16 @@ function displayIdea(id) {
   var title = retrievedArray.title;
   var body = retrievedArray.body;
   var id = retrievedArray.id;
-  var importance = retrievedArray.importance;
   var importanceCount = retrievedArray.importanceCount;
-  createIdea(title, body, id, importance, importanceCount);
+  createIdea(title, body, id, importanceCount);
 }
 
 function storeIdea() {
   var $title = $('#title-input').val();
   var $body = $('#description-input').val();
   var $id = Date.now();
-  var $importance = 'none';
   var $importanceCount = 0;
-  var storeCard = new StoreCard($title, $body, $id, $importance, $importanceCount);
+  var storeCard = new StoreCard($title, $body, $id, $importanceCount);
   var stringified = JSON.stringify(storeCard);
   localStorage.setItem($id, stringified);
   displayIdea($id);
@@ -76,37 +74,54 @@ function upvote() {
   var parsedCardId = JSON.parse(localStorage.getItem(cardID));
   var importanceDot = $(this).parent().find('.importance-dot');
   if (parsedImportanceCount === 0) {
-    console.log(importanceDot);
-    console.log(parsedImportanceCount);
-    importanceDot.css('background-image', 'url(images/low-dot.svg)');
+    importanceDot.removeClass().addClass('importance-dot-1 importance-dot');
     parsedCardId.importance = 'low';
     parsedCardId.importanceCount++;
   } 
   else if (parsedImportanceCount === 1) {
-    console.log(importanceDot);
-    console.log(parsedImportanceCount);
-    importanceDot.css('background-image', 'url(images/normal-dot.svg)');
+    importanceDot.removeClass().addClass('importance-dot-2 importance-dot');
     parsedCardId.importance = 'normal';
     parsedCardId.importanceCount++;
   }
-    var qualityStringify = JSON.stringify(parsedCardId);
-    var storeQuality = localStorage.setItem(cardID, qualityStringify);
+  else if (parsedImportanceCount === 2) {
+    importanceDot.removeClass().addClass('importance-dot-3 importance-dot');
+    parsedCardId.importance = 'high';
+    parsedCardId.importanceCount++;
+  } 
+  else if (parsedImportanceCount === 3) {
+    importanceDot.removeClass().addClass('importance-dot-4 importance-dot');
+    parsedCardId.importance = 'critical';
+  }
+  var qualityStringify = JSON.stringify(parsedCardId);
+  var storeQuality = localStorage.setItem(cardID, qualityStringify);
 }
 
 function downvote() {
   var cardID = $(this).closest('article').attr('id');
+  var parsedImportanceCount = JSON.parse(localStorage.getItem(cardID)).importanceCount; 
   var parsedCardId = JSON.parse(localStorage.getItem(cardID));
-  var qualityDisplay = $(this).siblings('h3').find('.qualityValue');
-  if (qualityDisplay.text() === 'genius') {
-    qualityDisplay.text('plausible');
-    parsedCardId.quality = 'plausible';
+  var importanceDot = $(this).parent().find('.importance-dot');
+  if (parsedImportanceCount === 3) {
+    importanceDot.removeClass().addClass('importance-dot-3 importance-dot');
+    parsedCardId.importance = 'high';
+    parsedCardId.importanceCount--;
+  } 
+  else if (parsedImportanceCount === 2) {
+    importanceDot.removeClass().addClass('importance-dot-2 importance-dot');
+    parsedCardId.importance = 'normal';
+    parsedCardId.importanceCount--;
   }
-  else if (qualityDisplay.text() === 'plausible') {
-    qualityDisplay.text('swill');
-    parsedCardId.quality = 'swill';
+  else if (parsedImportanceCount === 1) {
+    importanceDot.removeClass().addClass('importance-dot-1 importance-dot');
+    parsedCardId.importance = 'low';
+    parsedCardId.importanceCount--;
+  } 
+  else if (parsedImportanceCount === 0) {
+    importanceDot.removeClass().addClass('importance-dot-0 importance-dot');
+    parsedCardId.importance = 'none';
   }
-    var qualityStringify = JSON.stringify(parsedCardId);
-    var storeQuality = localStorage.setItem(cardID, qualityStringify);
+  var qualityStringify = JSON.stringify(parsedCardId);
+  var storeQuality = localStorage.setItem(cardID, qualityStringify);
 }
 
 function removeCard() {
@@ -116,19 +131,19 @@ function removeCard() {
   cardToDel.remove();
 }
 
-function StoreCard(title, body, id) {
+function StoreCard(title, body, id, importanceCount) {
   this.title = title;
   this.body = body;
   this.id = id;
-  this.importanceCount = 0; 
+  this.importanceCount = importanceCount || 0;
 }
 
-function createIdea(title, body, id) {
+function createIdea(title, body, id, importanceCount) {
   $('.card-container').prepend(
     `<article class="card" id ="${id}">
       <div class="vote-container">
         <div class="circle-upvote"> </div>
-        <div class="importance-dot"> </div>
+        <div class="importance-dot-${importanceCount} importance-dot"> </div>
         <div class="circle-downvote"> </div>
       </div>
       <div class="circle-delete"></div>

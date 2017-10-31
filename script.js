@@ -91,6 +91,7 @@ function upvote() {
   else if (parsedImportanceCount === 3) {
     importanceDot.removeClass().addClass('importance-dot-4 importance-dot');
     parsedCardId.importance = 'critical';
+    parsedCardId.importanceCount++;
   }
   var qualityStringify = JSON.stringify(parsedCardId);
   var storeQuality = localStorage.setItem(cardID, qualityStringify);
@@ -101,24 +102,25 @@ function downvote() {
   var parsedImportanceCount = JSON.parse(localStorage.getItem(cardID)).importanceCount; 
   var parsedCardId = JSON.parse(localStorage.getItem(cardID));
   var importanceDot = $(this).parent().find('.importance-dot');
-  if (parsedImportanceCount === 3) {
+  if (parsedImportanceCount === 4) {
     importanceDot.removeClass().addClass('importance-dot-3 importance-dot');
     parsedCardId.importance = 'high';
     parsedCardId.importanceCount--;
   } 
-  else if (parsedImportanceCount === 2) {
+  else if (parsedImportanceCount === 3) {
     importanceDot.removeClass().addClass('importance-dot-2 importance-dot');
     parsedCardId.importance = 'normal';
     parsedCardId.importanceCount--;
   }
-  else if (parsedImportanceCount === 1) {
+  else if (parsedImportanceCount === 2) {
     importanceDot.removeClass().addClass('importance-dot-1 importance-dot');
     parsedCardId.importance = 'low';
     parsedCardId.importanceCount--;
   } 
-  else if (parsedImportanceCount === 0) {
+  else if (parsedImportanceCount === 1) {
     importanceDot.removeClass().addClass('importance-dot-0 importance-dot');
     parsedCardId.importance = 'none';
+    parsedCardId.importanceCount--;
   }
   var qualityStringify = JSON.stringify(parsedCardId);
   var storeQuality = localStorage.setItem(cardID, qualityStringify);

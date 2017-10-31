@@ -93,8 +93,8 @@ body {
   position: relative;
   margin: 0 auto;
   padding-top: 50px;
-  padding-bottom: 10px;
-  width: 500px;
+  padding-bottom: 20px;
+  width: 325px;
 }
 
 #filter { 
@@ -113,8 +113,10 @@ body {
 }
 
 .filter-buttons {
-  width: 100%;
+  width: 438px;
+  margin: auto;
   margin-top: 10px;
+  padding-bottom: 20px;
 }
 .none, .low, .normal, .high, .critical {
   background-position: center;
@@ -177,7 +179,7 @@ body {
   width: 600px;
   margin: auto;
   margin-top: 20px; 
-  border-radius: 25px;
+  border-radius: 10px;
   height: 125px;
 }
 

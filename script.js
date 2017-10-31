@@ -8,8 +8,8 @@ $(document).ready(function() {
 $('.save-btn').on('click', storeOrReject);
 $('.card-container').on('blur', 'article h2', editCardTitle);
 $('.card-container').on('blur', 'article p', editCardBody);
-$('.card-container').on('click', '.circle-upvote', upvote);
-$('.card-container').on('click', '.circle-downvote', downvote);
+$('.card-container').on('mousedown', '.circle-upvote', upvote);
+$('.card-container').on('mousedown', '.circle-downvote', downvote);
 $('.card-container').on( 'click', '.circle-delete', removeCard);
 $('#title-input').on('keyup', enabledButton); 
 $('#description-input').on('keyup', enabledButton);
@@ -79,10 +79,9 @@ function upvote() {
   var parsedImportanceCount = JSON.parse(localStorage.getItem(cardID)).importanceCount; 
   var parsedCardId = JSON.parse(localStorage.getItem(cardID));
   var importanceDot = $(this).parent().find('.importance-dot');
-  parsedImportanceCount = (Math.max(0, parsedImportanceCount))
-  importanceDot.removeClass().addClass('importance-dot-'+parsedImportanceCount + ' importance-dot');
   if(parsedImportanceCount < 5){
-  parsedCardId.importanceCount++;
+    parsedCardId.importanceCount++;
+    importanceDot.removeClass().addClass('importance-dot-'+parsedCardId.importanceCount + ' importance-dot');
   }
   var qualityStringify = JSON.stringify(parsedCardId);
   var storeQuality = localStorage.setItem(cardID, qualityStringify);
@@ -93,10 +92,9 @@ function downvote() {
   var parsedImportanceCount = JSON.parse(localStorage.getItem(cardID)).importanceCount; 
   var parsedCardId = JSON.parse(localStorage.getItem(cardID));
   var importanceDot = $(this).parent().find('.importance-dot');
-  parsedImportanceCount = (Math.max(0, parsedImportanceCount-1))
-  importanceDot.removeClass().addClass('importance-dot-'+parsedImportanceCount + ' importance-dot');
-  if(parsedImportanceCount > 1){
-  parsedCardId.importanceCount--;
+  if(parsedImportanceCount > 1) {
+    parsedCardId.importanceCount--;
+    importanceDot.removeClass().addClass('importance-dot-'+parsedCardId.importanceCount + ' importance-dot');
   }
   var qualityStringify = JSON.stringify(parsedCardId);
   var storeQuality = localStorage.setItem(cardID, qualityStringify);

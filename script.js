@@ -21,16 +21,18 @@ function displayIdea(id) {
   var title = retrievedArray.title;
   var body = retrievedArray.body;
   var id = retrievedArray.id;
-  var quality = retrievedArray.quality;
-  createIdea(title, body, id, quality);
+  var importance = retrievedArray.importance;
+  var importanceCount = retrievedArray.importanceCount;
+  createIdea(title, body, id, importance, importanceCount);
 }
 
 function storeIdea() {
   var $title = $('#title-input').val();
   var $body = $('#description-input').val();
   var $id = Date.now();
-  var $quality = 'none';
-  var storeCard = new StoreCard($title, $body, $id, $quality);
+  var $importance = 'none';
+  var $importanceCount = 0;
+  var storeCard = new StoreCard($title, $body, $id, $importance, $importanceCount);
   var stringified = JSON.stringify(storeCard);
   localStorage.setItem($id, stringified);
   displayIdea($id);
@@ -70,15 +72,22 @@ function editCardBody() {
 
 function upvote() {
   var cardID = $(this).closest('article').attr('id');
+  var parsedImportanceCount = JSON.parse(localStorage.getItem(cardID)).importanceCount; 
   var parsedCardId = JSON.parse(localStorage.getItem(cardID));
-  var qualityDisplay = $(this).siblings('h3').find('.qualityValue');
-  if (qualityDisplay.text() === 'swill') {
-    qualityDisplay.text('plausible');
-    parsedCardId.quality = 'plausible';
+  var importanceDot = $(this).parent().find('.importance-dot');
+  if (parsedImportanceCount === 0) {
+    console.log(importanceDot);
+    console.log(parsedImportanceCount);
+    importanceDot.css('background-image', 'url(images/low-dot.svg)');
+    parsedCardId.importance = 'low';
+    parsedCardId.importanceCount++;
   } 
-  else if (qualityDisplay.text() === 'plausible') {
-    qualityDisplay.text('genius');
-    parsedCardId.quality = 'genius';
+  else if (parsedImportanceCount === 1) {
+    console.log(importanceDot);
+    console.log(parsedImportanceCount);
+    importanceDot.css('background-image', 'url(images/normal-dot.svg)');
+    parsedCardId.importance = 'normal';
+    parsedCardId.importanceCount++;
   }
     var qualityStringify = JSON.stringify(parsedCardId);
     var storeQuality = localStorage.setItem(cardID, qualityStringify);
@@ -107,14 +116,14 @@ function removeCard() {
   cardToDel.remove();
 }
 
-function StoreCard(title, body, id, quality) {
+function StoreCard(title, body, id) {
   this.title = title;
   this.body = body;
   this.id = id;
-  this.quality = quality;
+  this.importanceCount = 0; 
 }
 
-function createIdea(title, body, id, quality) {
+function createIdea(title, body, id) {
   $('.card-container').prepend(
     `<article class="card" id ="${id}">
       <div class="vote-container">

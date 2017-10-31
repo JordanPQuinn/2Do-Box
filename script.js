@@ -158,6 +158,7 @@ function createIdea(title, body, id, importanceCount) {
       <div class = "text-container">
       <h2 class="card-header" contenteditable="true">${title}</h2>
       <p contenteditable="true">${body}</p>
+      <button class="complete-task">COMPLETE</button>
       </div>
     </article>`)
 }

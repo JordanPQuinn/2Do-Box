@@ -222,23 +222,23 @@ body {
   cursor: pointer;
 }
 
-.importance-dot-0 {
+.importance-dot-1 {
   background-image: url('images/none-dot.svg');
 }
 
-.importance-dot-1 {
+.importance-dot-2 {
   background-image: url('images/low-dot.svg');
 }
 
-.importance-dot-2 {
+.importance-dot-3 {
   background-image: url('images/normal-dot.svg');
 }
 
-.importance-dot-3 {
+.importance-dot-4 {
   background-image: url('images/high-dot.svg');
 }
 
-.importance-dot-4 {
+.importance-dot-5 {
   background-image: url('images/critical-dot.svg');
 }
 

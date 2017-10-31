@@ -222,6 +222,19 @@ body {
   cursor: pointer;
 }
 
+.complete-task{
+  height: 20px;
+  width: 80px;
+  background-color:#D3D3D3;
+  color: #636161;
+  margin: 0 0 0 450px;
+  border-style: none;
+}
+
+.complete-task:hover{
+  color: #FFFFFF;
+}
+
 .importance-dot-1 {
   background-image: url('images/none-dot.svg');
 }

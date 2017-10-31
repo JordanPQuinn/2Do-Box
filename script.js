@@ -1,6 +1,7 @@
 $(document).ready(function() {
   for (var i in localStorage) {
     displayIdea(i);
+    hideCompleted();
     $('#title-input').focus();
   }
 });
@@ -19,6 +20,7 @@ $('.filter-buttons').on('click', '.low', lowFilter);
 $('.filter-buttons').on('click', '.normal', normalFilter);
 $('.filter-buttons').on('click', '.high', highFilter);
 $('.filter-buttons').on('click', '.critical', criticalFilter);
+$('.card-container').on('click', '.complete-task', completeTask);
 
 
 function displayIdea(id) {
@@ -28,7 +30,8 @@ function displayIdea(id) {
   var body = retrievedArray.body;
   var id = retrievedArray.id;
   var importanceCount = retrievedArray.importanceCount;
-  createIdea(title, body, id, importanceCount);
+  var complete = retrievedArray.complete;
+  createIdea(title, body, id, importanceCount, complete);
 }
 
 function storeIdea() {
@@ -36,7 +39,8 @@ function storeIdea() {
   var $body = $('#description-input').val();
   var $id = Date.now();
   var $importanceCount = 1;
-  var storeCard = new StoreCard($title, $body, $id, $importanceCount);
+  var $complete = 'false';
+  var storeCard = new StoreCard($title, $body, $id, $importanceCount, $complete);
   var stringified = JSON.stringify(storeCard);
   localStorage.setItem($id, stringified);
   displayIdea($id);
@@ -46,7 +50,6 @@ function storeOrReject(e) {
   e.preventDefault()
   var $title = $('#title-input').val();
   var $body = $('#description-input').val();
-  console.log($title);
   if (($title === '') || ($body === '')) {
     $('.title-missing-field').text('Please enter a valid to-do');
     return;
@@ -107,16 +110,17 @@ function removeCard() {
   cardToDel.remove();
 }
 
-function StoreCard(title, body, id, importanceCount) {
+function StoreCard(title, body, id, importanceCount, complete) {
   this.title = title;
   this.body = body;
   this.id = id;
   this.importanceCount = importanceCount || 1;
+  this.complete = complete || 'false';
 }
 
-function createIdea(title, body, id, importanceCount) {
+function createIdea(title, body, id, importanceCount, complete) {
   $('.card-container').prepend(
-    `<article class="card" id ="${id}">
+    `<article class="card ${complete}" id ="${id}">
       <div class="vote-container">
         <div class="circle-upvote"> </div>
         <div class="importance-dot-${importanceCount} importance-dot"> </div>
@@ -213,4 +217,20 @@ function criticalFilter(){
       $(importanceDotsArray[i]).closest('article').hide();
     }
   }
+}
+
+function completeTask() {
+  var card = $(this).closest('article');
+  var cardID = $(this).closest('article').attr('id');
+  var parsedCardId = JSON.parse(localStorage.getItem(cardID));
+  card.removeClass(parsedCardId.complete);
+  parsedCardId.complete = 'true';
+  card.addClass(parsedCardId.complete);
+  var qualityStringify = JSON.stringify(parsedCardId);
+  var storeQuality = localStorage.setItem(cardID, qualityStringify)
+}
+
+function hideCompleted(){
+  var completed = $('.true');
+  completed.hide();
 }

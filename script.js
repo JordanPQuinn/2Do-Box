@@ -1,11 +1,11 @@
 $(document).ready(function() {
-  for (var i in localStorage) {
+    for (var i in localStorage) {
     displayIdea(i);
     hideCompleted();
     $('#title-input').focus();
   }
-  showFirstTen();
-});
+    showFirstTen();
+  });
 
 $('.save-btn').on('click', storeOrReject);
 $('.card-container').on('blur', 'article h2', editCardTitle);
@@ -16,12 +16,15 @@ $('.card-container').on( 'click', '.circle-delete', removeCard);
 $('#title-input').on('keyup', enabledButton); 
 $('#description-input').on('keyup', enabledButton);
 $('#filter').on('keyup', searchContent);
+$('#filter').on('keyup', emptyContent);
 $('.filter-buttons').on('click','.none', noneFilter);
 $('.filter-buttons').on('click', '.low', lowFilter);
 $('.filter-buttons').on('click', '.normal', normalFilter);
 $('.filter-buttons').on('click', '.high', highFilter);
 $('.filter-buttons').on('click', '.critical', criticalFilter);
 $('.card-container').on('click', '.complete-task', completeTask);
+$('.card-side').on('click', '.load-more', showMore)
+$('.card-side').on('click', '.show-complete', showComplete)
 
 function displayIdea(id) {
   var getArray = localStorage.getItem(id);
@@ -44,6 +47,7 @@ function storeIdea() {
   var stringified = JSON.stringify(storeCard);
   localStorage.setItem($id, stringified);
   displayIdea($id);
+  showFirstTen();
 }
 
 function storeOrReject(e) {
@@ -108,6 +112,11 @@ function removeCard() {
   var cardID = $(cardToDel).attr('id');
   localStorage.removeItem(cardID)
   cardToDel.remove();
+  for (var i in localStorage) {
+    displayIdea(i);
+    hideCompleted();
+  }
+  showFirstTen();
 }
 
 function StoreCard(title, body, id, importanceCount, complete) {
@@ -236,12 +245,42 @@ function hideCompleted() {
 }
 
 function showFirstTen() {
-   var cardsArray = $('.card');
-   console.log(cardsArray);
-   for(var i = 0; i < cardsArray.length; i++){
+   var cardsToShowArray = $('.false');
+   for(var i = 0; i < cardsToShowArray.length; i++){
     if(i >= 10){
-      $(cardsArray[i]).hide();
+      $(cardsToShowArray[i]).hide();
     }
    }
  }
+
+ function showMore() {
+  var cardsToShowArray = $('.false');
+  for(var i = 0; i < cardsToShowArray.length; i++){
+    $(cardsToShowArray[i]).show();
+  }
+}
+
+function emptyContent() {
+  if($('#filter').val() === '') {
+    showFirstTen();
+  }
+}
+
+function showCards() {
+  for (var i in localStorage) {
+    displayIdea(i);
+    hideCompleted();
+  }
+}
+
+function showComplete() {
+  var uncompleteCards = $('.false');
+  var completedCards = $('.true');
+  for(var i = 0; i < completedCards.length; i++) {
+    $(completedCards[i]).show();
+  }
+  for(var i = 0; i < uncompleteCards.length; i++) {
+    $(uncompleteCards[i]).hide();
+  }
+}
 

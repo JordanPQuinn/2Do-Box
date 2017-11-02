@@ -174,6 +174,7 @@ function noneFilter(){
   for (i=0; i<importanceDotsArray.length; i++){
     if ($(importanceDotsArray[i]).hasClass('importance-dot-1')) {
       $(importanceDotsArray[i]).closest('article').show();
+      hideCompleted();
     }
     else {
       $(importanceDotsArray[i]).closest('article').hide();
@@ -186,6 +187,7 @@ function lowFilter(){
   for (i=0; i<importanceDotsArray.length; i++){
     if ($(importanceDotsArray[i]).hasClass('importance-dot-2')){
       $(importanceDotsArray[i]).closest('article').show();
+      hideCompleted();
     }
     else {
       $(importanceDotsArray[i]).closest('article').hide();
@@ -198,6 +200,7 @@ function normalFilter(){
   for (i=0; i<importanceDotsArray.length; i++){
     if ($(importanceDotsArray[i]).hasClass('importance-dot-3')){
       $(importanceDotsArray[i]).closest('article').show();
+      hideCompleted();
     }
     else {
       $(importanceDotsArray[i]).closest('article').hide();
@@ -210,6 +213,7 @@ function highFilter(){
   for (i=0; i<importanceDotsArray.length; i++){
     if ($(importanceDotsArray[i]).hasClass('importance-dot-4')){
       $(importanceDotsArray[i]).closest('article').show();
+      hideCompleted();
     }
     else {
       $(importanceDotsArray[i]).closest('article').hide();
@@ -222,6 +226,7 @@ function criticalFilter(){
   for (i=0; i<importanceDotsArray.length; i++){
     if ($(importanceDotsArray[i]).hasClass('importance-dot-5')){
       $(importanceDotsArray[i]).closest('article').show();
+      hideCompleted();
     }
     else {
       $(importanceDotsArray[i]).closest('article').hide();

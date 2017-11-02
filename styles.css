@@ -5,29 +5,29 @@ html {
   height: 100%;
 }
 body {
+  font-family: 'Lato', sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif;
 }
 
 .submit-side{
-  position: absolute;
   background-color: #D6D6D6;
-  width: 33.3%;
   display: inline-block;
   height: 103%;
-  min-height: 700px;
-  margin-right: -4px;
   margin-bottom: -5px;
+  margin-right: -4px;
+  min-height: 700px;
   overflow-y: auto;
+  position: absolute;
+  width: 33.3%;
 }
 
 .header {
-  text-align: center;
-  font-weight: 700;
   color: #2BA6A4;
   font-size: 60px;
+  font-weight: 700;
+  text-align: center;
 }
 
 .header-style {
@@ -40,27 +40,27 @@ body {
 
 .logo {
   display: block;
-  margin: auto;
   height: 175px;
+  margin: auto;
   width: auto;
 }
 
 #title-input, #description-input {
-  border: none;
   border-radius: 20px;
-  width: 240px;
+  border: none;
+  display: block;
   height: 18px;
   margin: auto;
-  display: block;
+  width: 240px;
 }
 
 .label-text {
   color: #636161;
   display: block;
-  text-align: center;
-  margin: auto;
-  margin-top: 45px;
   margin-bottom: 5px;
+  margin-top: 45px;
+  margin: auto;
+  text-align: center;
 }
 
 .label-text .two {
@@ -69,38 +69,38 @@ body {
 
 .save-btn {
   background-color: #2BA6A4;
-  color: #FFFFFF;
-  height: 35px;
-  width: 65px;
   border: none;
+  color: #FFFFFF;
   display: block;
-  margin: auto;
+  height: 35px;
   margin-top: 25px;
+  margin: auto;
+  width: 65px;
 }
 
 .save-btn:hover {
-  cursor: pointer;
   background-color: #FFFFFF;
   color:#2BA6A4;
+  cursor: pointer;
 }
 
 .load-more, .show-complete {
-  height: 35px;
-  width: 150px;
+  background-color: #FFFFFF;
   border: none;
+  color:#2BA6A4;
+  cursor: pointer;
+  height: 35px;
+  margin-bottom: 20px;
   margin-left: 50px;
   margin-top: 25px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  background-color: #FFFFFF;
-  color:#2BA6A4;
+  width: 150px;
 }
 
 .button-container {
-  width: 100%;
-  justify-content: center;
   display: inline-flex;
+  justify-content: center;
   margin: auto;
+  width: 100%;
 }
 
 .load-more:hover, .show-complete:hover {
@@ -109,58 +109,58 @@ body {
 }
 
 .card-side {
-  position: absolute;
-  left: 33.3%;
   background-color: #2BA6A4;
-  vertical-align: top;
   display: inline-block;
   height: 103%;
-  min-height: 700px;
-  width: 66.6%;
+  left: 33.3%;
   margin: 0;
+  min-height: 700px;
   padding: 0;
+  position: absolute;
+  vertical-align: top;
+  width: 66.6%;
 }
 
 .filter-container {
-  width: 100%;
-  position: relative;
   margin: 0 auto;
-  padding-top: 20px;
   padding-bottom: 20px;
+  padding-top: 20px;
+  position: relative;
+  width: 100%;
   width: 325px;
 }
 
 #filter { 
-  border: none;
   border-radius: 20px;
-
-  width: 240px;
+  border: none;
   height: 18px; 
+  width: 240px;
 }
 
 #filter-label {
   color: #FFFFFF;
+  display: inline-block;
+  font-size: 16px;
   font-weight: 300;
   margin-left: 10px;
-  font-size: 16px;
   padding-right: 5px;
-  display: inline-block;
 }
 
 .filter-buttons {
-  width: 437.5px;
-  margin: auto;
   margin-top: 0px;
+  margin: auto;
   padding-bottom: 20px;
+  width: 437.5px;
 }
+
 .none, .low, .normal, .high, .critical {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 25px;
-  width: 75px;
   border: none;
+  height: 25px;
   margin: 0 5px;
+  width: 75px;
 }
 
 .none {
@@ -204,19 +204,19 @@ body {
 }
 
 .card-container {
-  width: 100%;
   height: 72%;
-  position: relative;
   overflow-y: scroll;
+  position: relative;
+  width: 100%;
 }
 
 .card {
   background-color: #FFFFFF;
-  width: 600px;
-  margin: auto;
-  margin-top: 20px; 
   border-radius: 10px;
   height: 125px;
+  margin-top: 20px; 
+  margin: auto;
+  width: 600px;
 }
 
 .true {
@@ -242,11 +242,11 @@ body {
 .circle-delete {
   background-image: url('images/delete.svg');
   background-position: center;
-  height: 20px;
-  width: 20px;
   float: right;
-  margin-top: 20px;
+  height: 20px;
   margin-right: 20px; 
+  margin-top: 20px;
+  width: 20px;
 }
 
 .circle-delete:hover {
@@ -273,12 +273,12 @@ body {
 }
 
 .complete-task{
-  height: 20px;
-  width: 80px;
   background-color: #D3D3D3;
-  color: #636161;
-  margin: 0 0 0 450px;
   border-style: none;
+  color: #636161;
+  height: 20px;
+  margin: 0 0 0 450px;
+  width: 80px;
 }
 
 .complete-task:hover{
@@ -307,19 +307,19 @@ body {
 }
 
 .vote-container {
-  width: 40px;
   display: inline-block;
   margin-left: 10px;
   margin-top: 15px;
+  width: 40px;
 }
 
 .text-container {
   display: inline-block;
   height: 125px;
-  margin: auto;
-  width: 400px;
   margin-bottom: 20px;
+  margin: auto;
   vertical-align: top;
+  width: 400px;
 }
 
 .card-header {
@@ -350,15 +350,15 @@ p {
 
 @media screen and (max-width: 750px) {
   .submit-side {
+    max-height: 200px;
     position: relative;
     top: 0;
     width: 100%;
-    max-height: 200px;
   }
 
   .header {
-    margin: 0;
     font-size: 35px;
+    margin: 0;
   }
 
   .logo {
@@ -370,9 +370,9 @@ p {
   }
 
   .card-side {
-    width: 100%;
     left: 0;
     top: 300px;
+    width: 100%;
   }
   .title-missing-field {
     margin-top: 25px;
@@ -400,8 +400,8 @@ p {
   }
 
   .high, .critical  {
-    margin-top: 20px;
     margin-left: 50px;
+    margin-top: 20px;
   }
 
   .none, .low, .normal {
@@ -412,10 +412,10 @@ p {
   }
 
   .load-more, .show-complete {
+    font-size: 10px;
+    height: 25px;
     margin: auto;
     width: 100px;
-    height: 25px;
-    font-size: 10px;
   }
 }
 
@@ -433,9 +433,9 @@ p {
   }
 
   .load-more, .show-complete {
+    font-size: 10px;
+    height: 25px;
     margin: auto;
     width: 100px;
-    height: 25px;
-    font-size: 10px;
   }
 }

@@ -57,9 +57,9 @@ body {
 .label-text {
   color: #636161;
   display: block;
-  margin-bottom: 5px;
-  margin-top: 45px;
   margin: auto;
+  margin-top: 45px;
+   margin-bottom: 5px;
   text-align: center;
 }
 

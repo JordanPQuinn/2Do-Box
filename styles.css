@@ -82,17 +82,23 @@ body {
   color:#2BA6A4;
 }
 
-.load-more {
+.load-more, .show-complete {
   height: 35px;
   width: 150px;
   border: none;
-  display: block;
-  margin: auto;
+  margin-left: 50px;
   margin-top: 25px;
   margin-bottom: 20px;
   cursor: pointer;
   background-color: #FFFFFF;
   color:#2BA6A4;
+}
+
+.button-container {
+  width: 100%;
+  justify-content: center;
+  display: inline-flex;
+  margin: auto;
 }
 
 .load-more:hover {
@@ -125,6 +131,7 @@ body {
 #filter { 
   border: none;
   border-radius: 20px;
+
   width: 240px;
   height: 18px; 
 }
@@ -132,13 +139,14 @@ body {
 #filter-label {
   color: #FFFFFF;
   font-weight: 300;
+  margin-left: 10px;
   font-size: 16px;
   padding-right: 5px;
   display: inline-block;
 }
 
 .filter-buttons {
-  width: 445px;
+  width: 437.5px;
   margin: auto;
   margin-top: 0px;
   padding-bottom: 20px;

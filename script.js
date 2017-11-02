@@ -1,9 +1,9 @@
 $(document).ready(function() {
     for (var i in localStorage) {
     displayIdea(i);
-    hideCompleted();
-    $('#title-input').focus();
   }
+    hideCompleted();
+   $('#title-input').focus();
     showFirstTen();
   });
 
@@ -161,6 +161,7 @@ function searchContent(){
   for (i=0; i<$cardsTitle.length; i++){
    if ($($cardsTitle[i]).text().includes($searchValue) || ($($cardsBody[i]).text().includes($searchValue))) {
     $($cardsTitle[i]).closest('article').show();
+    hideCompleted();
    } 
    else {
     $($cardsTitle[i]).closest('article').hide();
@@ -255,7 +256,7 @@ function showFirstTen() {
 
  function showMore() {
   var cardsToShowArray = $('.false');
-  for(var i = 0; i < cardsToShowArray.length; i++){
+  for(var i = 10; i < cardsToShowArray.length; i++){
     $(cardsToShowArray[i]).show();
   }
 }
